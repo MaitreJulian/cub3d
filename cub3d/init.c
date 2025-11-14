@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:12:48 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/14 15:30:37 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/14 15:55:11 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static void	get_map_pos(t_camera *cam, char pos)
 		cam->diry = 0;
 		cam->planey = -0.66;
 	}
-	else if (pos == 'E') // regarde a l'Ouest
+	else if (pos == 'E') // regarde a l'Est
 	{
 		cam->dirx = 0;
 		cam->diry = 1;
 		cam->planex = 0.66;
 	}
-	else // regarde a l'Est
+	else // regarde a l'Ouest
 	{
 		cam->dirx = 0;
 		cam->diry = -1;
@@ -75,6 +75,8 @@ t_camera	*init_cam(void)
 	cam = malloc(sizeof(t_camera));
 	if (!cam)
 		return (ft_putendl_fd("Malloc cam failed", 2), NULL);
+	cam->posx = 0;
+	cam->posy = 0;
 	cam->planex = 0;
 	cam->planey = 0;
 	cam->hit = 0;

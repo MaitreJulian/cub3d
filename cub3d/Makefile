@@ -8,7 +8,7 @@ LIBFT_DIR		= libft
 MINILIBX_DIR	= minilibx-linux
 DIR_O	= file_o
 
-SRC		= main.c init.c draw.c free_and_error.c ft_mlx.c \
+SRC		= main.c init.c draw.c free_and_error.c ft_mlx.c move.c look.c \
 		  $(PARSING_DIR)/error.c $(PARSING_DIR)/extract_map.c \
 		  $(PARSING_DIR)/init_map.c $(PARSING_DIR)/init_textures.c \
 		  $(PARSING_DIR)/key_hook.c $(PARSING_DIR)/utils.c $(PARSING_DIR)/mainju.c
