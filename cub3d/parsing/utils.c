@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
+/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:05 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/14 14:15:39 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/14 18:09:38 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	print_map(char **map_tab)
 			printf("%c", map_tab[i][j]);
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
 }
@@ -56,4 +55,24 @@ int	only_01(char *line)
 			return (0);
 	}
 	return (1);
+}
+
+char	**copy_map(char **map)
+{
+	int		i;
+	int		len;
+	char	**map_copy;
+
+	i = 0;
+	len = 0;
+	while (map && map[len])
+		len++;
+	map_copy = malloc(sizeof(char *) * len + 1);
+	while (map && map[i])
+	{
+		map_copy[i] = ft_strdup(map[i]);
+		i++;
+	}
+	map_copy[i] = NULL;
+	return (map_copy);
 }

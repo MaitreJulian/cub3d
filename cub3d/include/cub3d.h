@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
+/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:50:15 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/14 14:41:43 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/14 16:55:25 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		ft_error(char c);
 int		check_name(char *file);
 
 //INIT_MAP
+int		check_map(t_map *map);
 void	extract_map(t_map *map, char *line);
 void	init_map(t_map *map, char *file);
 t_map	*parse_map(char **argv);
@@ -70,5 +71,6 @@ size_t	ft_strlen(const char *str);
 void	print_textures(t_textures *text);
 void	print_map(char **map_tab);
 int		only_01(char *line);
+char	**copy_map(char **map);
 
 #endif

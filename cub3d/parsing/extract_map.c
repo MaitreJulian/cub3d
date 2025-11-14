@@ -3,50 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
+/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:02:58 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/14 14:38:02 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/14 16:40:44 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../include/raycast.h"
 
-int	check_player(char **map)
-{
-	int	i;
-	int	j;
-	int	p;
 
-	i = -1;
-	p = 0;
-	while (map[++i] && p < 2)
-	{
-		j = 0;
-		while (map[i][j] == '0' || map[i][j] == '1' || map[i][j] == ' ')
-			j++;
-		if (map[i][j] == '\0' || map[i][j] == '\n')
-			continue ;
-		if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'E'
-			|| map[i][j] == 'S')
-			p++;
-		else
-			return (ft_error('t'), -1);
-	}
-	if (p >= 2)
-		return (ft_error('p'), -1);
-	return (1);
-}
-int	check_map(t_map *map)
-{
-	if (!check_player(map->tab))
-		//|| flood_fill(map->pos_p_x, map->pos_p_y) == -1)
-		return (-1);
-	return(1);
-}
 
-char **ft_realloc_map(char **map_tab, int *size)
+char	**ft_realloc_map(char **map_tab, int *size)
 {
 	char	**new_map;
 	int		i;
