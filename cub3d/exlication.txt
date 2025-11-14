@@ -1,0 +1,9 @@
+CUB3D GOD DAMN
+
+
+
+
+DIR de la cam
+dirX et dirY
+si dirY = 0, dirX = 1 => EST,  dirX = -1 => OUEST
+si dirX = 0, dirY = 1 => NORD, dirY = -1 => SUD
