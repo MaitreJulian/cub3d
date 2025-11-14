@@ -1,0 +1,20 @@
+NO ./chemin/vers/le/mur/nord
+SO ./chemin/vers/le/mur/sud
+
+
+EA ./chemin/vers/le/mur/est
+
+
+WE ./chemin/vers/le/mur/ouest
+
+F 220,100,0
+
+
+C 225,30,0
+
+
+11111111111   11111111 111
+10000000001   10000001 101
+10000000001111100000011101
+10000000000000000N00000001
+11111111111111111111111111
