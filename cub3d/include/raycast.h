@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:40:16 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/14 17:00:29 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/17 14:58:56 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "../minilibx-linux/mlx.h"
 # include "cub3d.h"
 # include <math.h>
+# include <sys/time.h>
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~  DEFINE  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -58,6 +59,7 @@ typedef struct s_camera
 	int		hit;
 	int		side;
 	int		lineheight;
+	double	rot_speed;
 }			t_camera;
 
 typedef struct s_data

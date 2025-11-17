@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:12:48 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/14 15:55:11 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/17 13:12:13 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,11 @@ t_camera	*init_cam(void)
 	cam = malloc(sizeof(t_camera));
 	if (!cam)
 		return (ft_putendl_fd("Malloc cam failed", 2), NULL);
-	cam->posx = 0;
-	cam->posy = 0;
+	cam->posx = -1;
+	cam->posy = -1;
 	cam->planex = 0;
 	cam->planey = 0;
 	cam->hit = 0;
+	cam->rot_speed = 0.35;
 	return (cam);
 }

@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/14 16:59:06 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/17 11:26:20 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	close_window(void *param)
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
-	// free(data);
 	exit (0);
 	return (0);
 }
@@ -55,16 +54,14 @@ int	main(int argc, char **argv)
 
 	if (argc != 2 && !argv[1])
 		return (display_error("Format: ./cub3D 'map'", 1, 2));
-	// PARSING of the map
-	data = malloc(sizeof(data));
+	data = malloc(sizeof(t_data));
 	if (!data)
 		return (display_error("Malloc of struct data failed", 1, 2));
-	data->mlx = mlx_init();
 	data->mlx = mlx_init();
 	data->win = mlx_new_window((*data).mlx, WIN_LENGTH, WIN_HEIGHT, "cub3D");
 	data->img = mlx_new_image((*data).mlx, WIN_LENGTH, WIN_HEIGHT);
 	data->addr = mlx_get_data_addr((*data).img, &(*data).bits_per_pixel,
-		&(*data).line_length, &(*data).endian);
+			&(*data).line_length, &(*data).endian);
 	data->map = parse_map(argv);
 	data->cam = init_cam();
 	if (!data->cam)

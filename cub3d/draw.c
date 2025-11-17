@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:42:08 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/14 16:04:31 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/17 15:03:27 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	do_landscape(t_data *d)
 		while (j < WIN_HEIGHT)
 		{
 			if (j < WIN_HEIGHT / 2)
-				my_mlx_pixel_put(d, i, j, 0x4B615C);
+				my_mlx_pixel_put(d, i, j, 0xAFDAE0);
 			else
-				my_mlx_pixel_put(d, i, j, 0x5B4B61);
+				my_mlx_pixel_put(d, i, j, 0x756C66);
 			j++;
 		}
 		i++;
@@ -36,12 +36,12 @@ void	do_landscape(t_data *d)
 
 void	draw(t_data *d, t_map *map)
 {
-	int			i;
-	int			drawstart;
-	int			drawend;
+	int		i;
+	int		drawstart;
+	int		drawend;
 
 	do_landscape(d);
-	if (d->cam->posx != -1 && d->cam->posy != -1)
+	if (d->cam->posx == -1 && d->cam->posy == -1)
 		d->cam = get_start_pos(d->cam, map);
 	i = 0;
 	while (i < WIN_LENGTH)
@@ -115,13 +115,27 @@ void	draw(t_data *d, t_map *map)
 			if (map->tab[d->cam->mapx][d->cam->mapy] > 0)
 			{
 				if (d->cam->side == 0)
-					my_mlx_pixel_put(d, i, drawstart, 0x00FFFF);
+				{
+					if (d->cam->raydirx > 0)
+						my_mlx_pixel_put(d, i, drawstart, 0xDB6C3B);
+					else
+						my_mlx_pixel_put(d, i, drawstart, 0xABDB3B);
+				}
 				else
-					my_mlx_pixel_put(d, i, drawstart, 0xFFFF00);
+				{
+					if (d->cam->raydiry > 0)
+						my_mlx_pixel_put(d, i, drawstart, 0x3BABDB);
+					else
+						my_mlx_pixel_put(d, i, drawstart, 0x6B3BDB);
+				}
 			}
 			drawstart++;
 		}
 		i++;
 	}
 	mlx_put_image_to_window(d->mlx, d->win, d->img, 0, 0);
+	printf("posX : %f\n", d->cam->posx);
+	printf("posY : %f\n", d->cam->posy);
+	printf("dirX : %f\n", d->cam->dirx);
+	printf("diry : %f\n\n", d->cam->diry);
 }

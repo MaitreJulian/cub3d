@@ -1,11 +1,11 @@
-NO ./chemin/vers/le/mur/nord
-SO ./chemin/vers/le/mur/sud
+NO textures/wall_blue.xpm ./chemin/vers/le/mur/nord
+SO textures/wall_gray.xpm ./chemin/vers/le/mur/sud
 
 
-EA ./chemin/vers/le/mur/est
+EA textures/wall_purple.xpm ./chemin/vers/le/mur/est
 
 
-WE ./chemin/vers/le/mur/ouest
+WE textures/wall_yellow.xpm ./chemin/vers/le/mur/ouest
 
 F 220,100,0
 
