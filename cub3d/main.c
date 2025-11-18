@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 18:48:49 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/18 18:58:11 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int	close_window(void *param)
 	free(data->mlx);
 	free_map(data->map);
 	free(data->cam);
+	free(data->imgs[0].img);
+	free(data->imgs[1].img);
+	free(data->imgs[2].img);
+	free(data->imgs[3].img);
 	free(data);
 	exit (0);
 	return (0);
