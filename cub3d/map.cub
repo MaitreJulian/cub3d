@@ -1,11 +1,11 @@
-NO ./textures/1.xpm
-SO ./textures/2.xpm
+NO ./textures/a.xpm
+SO ./textures/b.xpm
 
 
-EA ./textures/3.xpm
+EA ./textures/c.xpm
 
 
-WE ./textures/4.xpm
+WE ./textures/d.xpm
 
 F 220,100,0
 
