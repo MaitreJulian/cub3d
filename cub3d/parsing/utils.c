@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
+/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:05 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/14 18:09:38 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:56:02 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	print_map(char **map_tab)
 
 void	print_textures(t_textures *text)
 {
-	printf("%d\n", text->north);
-	printf("%d\n", text->south);
-	printf("%d\n", text->west);
-	printf("%d\n", text->east);
+	printf("%s\n", text->north);
+	printf("%s\n", text->south);
+	printf("%s\n", text->west);
+	printf("%s\n", text->east);
 	printf("%i %i %i \n", text->ceiling[0], text->ceiling[1], text->ceiling[0]);
 	printf("%i %i %i \n", text->floor[0], text->floor[1], text->floor[0]);
 }

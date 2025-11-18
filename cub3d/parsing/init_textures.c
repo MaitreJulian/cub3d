@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
+/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 11:49:01 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/18 12:09:13 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ char	*without_space(char *line)
 		line++;
 	while (!ft_isspace(line[i]) && line[i])
 		i++;
-	new_line = ft_substr(line, 0, i);
-	// if (fd < 0)
-	// {
-	// 	ft_error('o');
-	// 	exit (1);
-	// }
+	if (ft_strncmp(line, "./", 2) == 0)
+		new_line = ft_substr(line, 2, i);
+	else
+	{
+		// PROBLEME FORMAT
+	}
 	return (new_line);
 }
 

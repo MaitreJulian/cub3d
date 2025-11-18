@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 11:37:33 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:59:28 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	main(int argc, char **argv)
 	data->img = mlx_new_image((*data).mlx, WIN_LENGTH, WIN_HEIGHT);
 	data->addr = mlx_get_data_addr((*data).img, &(*data).bits_per_pixel,
 			&(*data).line_length, &(*data).endian);
-	data = init_img(data);
 	data->map = parse_map(argv);
+	data = init_img(data);
 	data->cam = init_cam();
 	if (!data->cam)
 		return (1);

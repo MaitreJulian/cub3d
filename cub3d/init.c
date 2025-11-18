@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:12:48 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 11:50:45 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:58:23 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	load_img(t_data	*d, int i)
 	char	*file;
 
 	if (i == 0)
-		file = "textures/1.xpm";
+		file = d->map->texture->north;
 	else if (i == 1)
-		file = "textures/2.xpm";
+		file = d->map->texture->south;
 	else if (i == 2)
-		file = "textures/3.xpm";
+		file = d->map->texture->west;
 	else
-		file = "textures/4.xpm";
+		file = d->map->texture->east;
 
 	d->imgs[i].img = mlx_xpm_file_to_image(d->mlx, file,
 			&d->imgs[i].width, &d->imgs[i].height);
