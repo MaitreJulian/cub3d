@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:40:16 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 11:37:22 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/18 16:22:32 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,20 @@
 # define RIGHT		100
 # define LOOK_R		65361
 # define LOOK_L		65363
-# define WIN_HEIGHT	1200
-# define WIN_LENGTH	1200
+# define WIN_HEIGHT	1600
+# define WIN_LENGTH	1600
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~  STRUCT  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+typedef struct s_key
+{
+	int	up;
+	int	down;
+	int	left;
+	int	right;
+	int	look_l;
+	int	look_r;
+}			t_key;
 
 typedef struct s_imgs
 {
@@ -71,6 +81,9 @@ typedef struct s_camera
 	int		side;
 	int		lineheight;
 	double	rot_speed;
+	int		draw_start;
+	int		draw_end;
+	int		tex_x;
 }			t_camera;
 
 typedef struct s_data
@@ -85,6 +98,7 @@ typedef struct s_data
 	t_camera	*cam;
 	t_map		*map;
 	t_imgs		imgs[4];
+	t_key		key;
 }				t_data;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~  PROTO  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -96,6 +110,9 @@ t_data		*init_img(t_data *d);
 
 // PRINT SCREEN
 void		draw(t_data *d, t_map *map);
+void		side_dist(t_data *d);
+void		detect_wall(t_data *d, t_map *map);
+void		size_wall(t_data *d);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 // MOVE

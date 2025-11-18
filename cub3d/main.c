@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 11:59:28 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/18 16:17:51 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,70 @@ int	get_key(int keycode, void *param)
 	data = (t_data *)param;
 	if (keycode == ESCAPE)
 		return (close_window(param));
-	else if (keycode == FORWARD)
-		move_forward(data);
+	// else if (keycode == FORWARD)
+	// 	move_forward(data);
+	// else if (keycode == BACKWARD)
+	// 	move_backward(data);
+	// else if (keycode == LEFT)
+	// 	move_left(data);
+	// else if (keycode == RIGHT)
+	// 	move_right(data);
+	// else if (keycode == LOOK_L)
+	// 	look_left(data);
+	// else if (keycode == LOOK_R)
+	// 	look_right(data);
+	return (0);
+}
+
+int	key_press(int keycode, t_data *data)
+{
+	if (keycode == ESCAPE)
+		return (close_window(data));
+	if (keycode == FORWARD)
+		data->key.up = 1;
 	else if (keycode == BACKWARD)
-		move_backward(data);
+		data->key.down = 1;
 	else if (keycode == LEFT)
-		move_left(data);
+		data->key.left = 1;
 	else if (keycode == RIGHT)
-		move_right(data);
+		data->key.right = 1;
 	else if (keycode == LOOK_L)
-		look_left(data);
+		data->key.look_l = 1;
 	else if (keycode == LOOK_R)
+		data->key.look_r = 1;
+	return (0);
+}
+
+int	key_release(int keycode, t_data *data)
+{
+	if (keycode == FORWARD)
+		data->key.up = 0;
+	else if (keycode == BACKWARD)
+		data->key.down = 0;
+	else if (keycode == LEFT)
+		data->key.left = 0;
+	else if (keycode == RIGHT)
+		data->key.right = 0;
+	else if (keycode == LOOK_L)
+		data->key.look_l = 0;
+	else if (keycode == LOOK_R)
+		data->key.look_r = 0;
+	return (0);
+}
+
+int	update(t_data *data)
+{
+	if (data->key.up)
+		move_forward(data);
+	if (data->key.down)
+		move_backward(data);
+	if (data->key.left)
+		move_left(data);
+	if (data->key.right)
+		move_right(data);
+	if (data->key.look_l)
+		look_left(data);
+	if (data->key.look_r)
 		look_right(data);
 	return (0);
 }
@@ -68,8 +121,11 @@ int	main(int argc, char **argv)
 	if (!data->cam)
 		return (1);
 	draw(data, data->map);
-	mlx_key_hook((*data).win, get_key, data);
+	// mlx_key_hook((*data).win, get_key, data);
+	mlx_hook(data->win, 2, 1L << 0, key_press, data);
+	mlx_hook(data->win, 3, 1L << 1, key_release, data);
 	mlx_hook((*data).win, 17, 0, close_window, data);
+	mlx_loop_hook(data->mlx, update, data);
 	mlx_loop((*data).mlx);
 	return (0);
 }

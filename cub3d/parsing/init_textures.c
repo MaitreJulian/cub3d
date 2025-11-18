@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 12:09:13 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/18 13:26:51 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,21 @@ char	*without_space(char *line)
 	i = 0;
 	while (ft_isspace(*line) && *line)
 		line++;
-	while (!ft_isspace(line[i]) && line[i])
-		i++;
 	if (ft_strncmp(line, "./", 2) == 0)
-		new_line = ft_substr(line, 2, i);
-	else
 	{
-		// PROBLEME FORMAT
+		line++;
+		line++;
 	}
+	while (!ft_isspace(line[i]) && line[i])
+	{
+		if (line[i] == '\n')
+		{
+			i--;
+			break ;
+		}
+		i++;
+	}
+	new_line = ft_substr(line, 0, i);
 	return (new_line);
 }
 

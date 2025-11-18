@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:12:48 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 11:58:23 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/18 16:19:52 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_camera	*init_cam(void)
 	cam->planex = 0;
 	cam->planey = 0;
 	cam->hit = 0;
-	cam->rot_speed = 0.35;
+	cam->rot_speed = 0.10;
 	return (cam);
 }
 
@@ -114,5 +114,11 @@ t_data	*init_img(t_data *d)
 		load_img(d, i);
 		i++;
 	}
+	d->key.up = 0;
+	d->key.down = 0;
+	d->key.right = 0;
+	d->key.left = 0;
+	d->key.look_r = 0;
+	d->key.look_l = 0;
 	return (d);
 }
