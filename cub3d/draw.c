@@ -6,11 +6,19 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:42:08 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/17 15:03:27 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:53:23 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/raycast.h"
+
+unsigned int	get_text_color(t_imgs *img, int x, int y)
+{
+	char	*pixel;
+
+	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	return (*(unsigned int *)pixel);
+}
 
 void	do_landscape(t_data *d)
 {

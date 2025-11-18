@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:40:16 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/17 14:58:56 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:37:22 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,17 @@
 # define WIN_LENGTH	1200
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~  STRUCT  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+typedef struct s_imgs
+{
+	void	*img;		// pointeur image MLX
+	void	*addr;		// adresse du premier pixel
+	int		bpp;		// bits par pixel
+	int		line_len;	// taille d'une ligne de l'image en octets
+	int		endian;		// fuck endian
+	int		width;		// largeur de l'image
+	int		height;		// hauteur de l'image
+}			t_imgs;
 
 typedef struct s_camera
 {
@@ -73,6 +84,7 @@ typedef struct s_data
 	int			endian;
 	t_camera	*cam;
 	t_map		*map;
+	t_imgs		imgs[4];
 }				t_data;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~  PROTO  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -80,6 +92,7 @@ typedef struct s_data
 // INIT
 t_camera	*init_cam(void);
 t_camera	*get_start_pos(t_camera *cam, t_map *map);
+t_data		*init_img(t_data *d);
 
 // PRINT SCREEN
 void		draw(t_data *d, t_map *map);
