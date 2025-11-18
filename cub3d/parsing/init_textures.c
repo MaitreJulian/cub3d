@@ -3,20 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
+/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/14 14:16:57 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:49:01 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../include/raycast.h"
 
-int	without_space(char *line)
+char	*without_space(char *line)
 {
 	int		i;
-	int		fd;
 	char	*new_line;
 
 	i = 0;
@@ -25,13 +24,12 @@ int	without_space(char *line)
 	while (!ft_isspace(line[i]) && line[i])
 		i++;
 	new_line = ft_substr(line, 0, i);
-	fd = open(new_line, O_RDONLY);
 	// if (fd < 0)
 	// {
 	// 	ft_error('o');
 	// 	exit (1);
 	// }
-	return (fd);
+	return (new_line);
 }
 
 int	*fill_tab(char *line)

@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:50:15 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/14 16:55:25 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:49:24 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 
 typedef struct s_textures
 {
-	int		north;
-	int		south;
-	int		east;
-	int		west;
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
 	int		*ceiling;
 	int		*floor;
 }	t_textures;
