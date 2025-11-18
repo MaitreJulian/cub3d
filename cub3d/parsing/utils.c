@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:05 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 16:20:58 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/18 18:33:58 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	**copy_map(char **map)
 	len = 0;
 	while (map && map[len])
 		len++;
-	map_copy = malloc(sizeof(char *) * len + 1);
+	map_copy = malloc(sizeof(char *) * (len + 1));
 	while (map && map[i])
 	{
 		map_copy[i] = ft_strdup(map[i]);

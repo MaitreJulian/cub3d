@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:41:03 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 15:48:08 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/18 18:27:48 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ int	check_map(t_map *map)
 	pos_player(map);
 	if (!flood_fill(map_copy, map->pos_p_y, map->pos_p_x))
 		return (0);
+	free_tab(map_copy);
 	return (1);
 }

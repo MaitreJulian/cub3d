@@ -6,26 +6,29 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 18:02:53 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 15:47:21 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/18 18:24:04 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../include/raycast.h"
 
-void	free_map(t_map *map)
+void	free_tab(char **map)
 {
 	int	i;
 
+	i = -1;
+	while (map[++i])
+		free(map[i]);
+	free(map);
+}
+
+void	free_map(t_map *map)
+{
 	if (map)
 	{
 		if (map->tab)
-		{
-			i = -1;
-			while (map->tab[++i])
-				free(map->tab[i]);
-			free(map->tab);
-		}
+			free_tab(map->tab);
 		if (map->texture)
 		{
 			free(map->texture->north);

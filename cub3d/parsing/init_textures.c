@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 18:18:50 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/18 18:36:10 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	put_rgb(char *line)
 	b = ft_atoi(splited[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 		ft_error('a');
+	free_tab(splited);
 	return (r * 65536 + g * 256 + b);
 }
 
