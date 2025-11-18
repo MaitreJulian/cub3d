@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
+/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 11:59:28 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/18 14:33:26 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	main(int argc, char **argv)
 	data->addr = mlx_get_data_addr((*data).img, &(*data).bits_per_pixel,
 			&(*data).line_length, &(*data).endian);
 	data->map = parse_map(argv);
+	if (!data->map)
+		exit(1); // Il faut free la mlx avant de quitter
 	data = init_img(data);
 	data->cam = init_cam();
 	if (!data->cam)

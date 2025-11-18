@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
+/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:07:25 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/05 12:38:48 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/18 13:26:50 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ static char	*get_line(char *stash)
 	if (!stash)
 		return (NULL);
 	while (stash[i] != '\n' && stash[i])
-		i++;
-	if (stash[i] == '\n')
 		i++;
 	word = (char *)malloc(sizeof(char) * (i + 1));
 	if (!word)

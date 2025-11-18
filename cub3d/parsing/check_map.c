@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:41:03 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/14 17:15:28 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/18 15:48:08 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	pos_player(t_map *map)
 	{
 		j = 0;
 		while ((map->tab[i][j] == '0' || map->tab[i][j] == '1'
-			|| map->tab[i][j] == ' ' || map->tab[i][j] == '\n')
+			|| map->tab[i][j] == ' ')
 			&& map->tab[i][j])
 			j++;
 		if (map->tab[i][j] == 'N' || map->tab[i][j] == 'W'
@@ -39,8 +39,7 @@ void	pos_player(t_map *map)
 
 int	flood_fill(char **map, int i, int j)
 {
-	print_map(map);
-	if (map[i][j] == '1' || map[i][j] == 'Y' || map[i][j] == '\n')
+	if (map[i][j] == '1' || map[i][j] == 'Y')
 		return (1);
 	if (map[i][j] == '0' || map[i][j] == 'E'
 		|| map[i][j] == 'S' || map[i][j] == 'W'
@@ -72,7 +71,7 @@ int	check_player(char **map)
 		j = 0;
 		while (map[i][j] == '0' || map[i][j] == '1' || map[i][j] == ' ')
 			j++;
-		if (map[i][j] == '\0' || map[i][j] == '\n')
+		if (map[i][j] == '\0')
 			continue ;
 		if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'E'
 			|| map[i][j] == 'S')
@@ -80,10 +79,10 @@ int	check_player(char **map)
 			p++;
 		}
 		else
-			return (ft_error('t'), -1);
+			return (ft_error('t'));
 	}
 	if (p == 0 || p >= 2)
-		return (ft_error('p'), -1);
+		return (ft_error('p'));
 	return (1);
 }
 
@@ -92,7 +91,7 @@ int	check_map(t_map *map)
 	char	**map_copy;
 
 	map_copy = copy_map (map->tab);
-	if (!check_player(map->tab))
+	if (check_player(map->tab) == -1)
 		return (0);
 	pos_player(map);
 	if (!flood_fill(map_copy, map->pos_p_y, map->pos_p_x))
