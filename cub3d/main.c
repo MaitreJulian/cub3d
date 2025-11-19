@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/19 14:27:24 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/19 16:12:23 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,27 @@ int	close_window(void *param)
 	return (0);
 }
 
-int	get_key(int keycode, void *param)
-{
-	// t_data	*data;
+// int	get_key(int keycode, void *param)
+// {
+// 	// t_data	*data;
 
-	// data = (t_data *)param;
-	if (keycode == ESCAPE)
-		return (close_window(param));
-	// else if (keycode == FORWARD)
-	// 	move_forward(data);
-	// else if (keycode == BACKWARD)
-	// 	move_backward(data);
-	// else if (keycode == LEFT)
-	// 	move_left(data);
-	// else if (keycode == RIGHT)
-	// 	move_right(data);
-	// else if (keycode == LOOK_L)
-	// 	look_left(data);
-	// else if (keycode == LOOK_R)
-	// 	look_right(data);
-	return (0);
-}
+// 	// data = (t_data *)param;
+// 	if (keycode == ESCAPE)
+// 		return (close_window(param));
+// 	// else if (keycode == FORWARD)
+// 	// 	move_forward(data);
+// 	// else if (keycode == BACKWARD)
+// 	// 	move_backward(data);
+// 	// else if (keycode == LEFT)
+// 	// 	move_left(data);
+// 	// else if (keycode == RIGHT)
+// 	// 	move_right(data);
+// 	// else if (keycode == LOOK_L)
+// 	// 	look_left(data);
+// 	// else if (keycode == LOOK_R)
+// 	// 	look_right(data);
+// 	return (0);
+// }
 
 int	key_press(int keycode, t_data *data)
 {

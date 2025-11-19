@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:12:48 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/19 14:15:02 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/19 16:12:59 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	load_img(t_data	*d, int i)
 		file = d->map->texture->west;
 	else
 		file = d->map->texture->east;
-
 	d->imgs[i].img = mlx_xpm_file_to_image(d->mlx, file,
 			&d->imgs[i].width, &d->imgs[i].height);
 	d->imgs[i].addr = mlx_get_data_addr(d->imgs[i].img, &d->imgs[i].bpp,
@@ -34,25 +33,25 @@ static void	load_img(t_data	*d, int i)
 
 static void	get_map_pos(t_camera *cam, char pos)
 {
-	if (pos == 'N') // regarde au Nord
+	if (pos == 'N')
 	{
 		cam->dirx = -1;
 		cam->diry = 0;
 		cam->planey = 0.66;
 	}
-	else if (pos == 'S') // regarde au Sud
+	else if (pos == 'S')
 	{
 		cam->dirx = 1;
 		cam->diry = 0;
 		cam->planey = -0.66;
 	}
-	else if (pos == 'E') // regarde a l'Est
+	else if (pos == 'E')
 	{
 		cam->dirx = 0;
 		cam->diry = 1;
 		cam->planex = 0.66;
 	}
-	else // regarde a l'Ouest
+	else
 	{
 		cam->dirx = 0;
 		cam->diry = -1;

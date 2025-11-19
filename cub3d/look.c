@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:54:21 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/19 10:12:05 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/19 16:12:39 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	look_left(t_data *d)
 		- d->cam->planey * sin(-d->cam->rot_speed);
 	d->cam->planey = old_plane_x * sin(-d->cam->rot_speed)
 		+ d->cam->planey * cos(-d->cam->rot_speed);
-	// draw(d, d->map);
 }
 
 void	look_right(t_data *d)
@@ -46,5 +45,4 @@ void	look_right(t_data *d)
 		- d->cam->planey * sin(d->cam->rot_speed);
 	d->cam->planey = old_plane_x * sin(d->cam->rot_speed)
 		+ d->cam->planey * cos(d->cam->rot_speed);
-	// draw(d, d->map);
 }

@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:42:08 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/19 13:43:25 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/19 16:13:48 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static void	do_landscape(t_data *d)
 		while (j < WIN_HEIGHT)
 		{
 			if (j < WIN_HEIGHT / 2)
-				my_mlx_pixel_put(d, i, j, 0xBD2639);
+				my_mlx_pixel_put(d, i, j, d->map->texture->ceiling);
 			else
-				my_mlx_pixel_put(d, i, j, 0x000000);
+				my_mlx_pixel_put(d, i, j, d->map->texture->floor);
 			j++;
 		}
 		i++;
@@ -130,10 +130,8 @@ void	draw(t_data *d, t_map *map)
 		d->cam->camerax = 2 * i / ((double)WIN_LENGTH - 1) - 1;
 		d->cam->raydirx = d->cam->dirx + d->cam->planex * d->cam->camerax;
 		d->cam->raydiry = d->cam->diry + d->cam->planey * d->cam->camerax;
-		// case de depars
 		d->cam->mapx = (int)d->cam->posx;
 		d->cam->mapy = (int)d->cam->posy;
-		// calcule du delta
 		d->cam->deltadistx = fabs(1 / d->cam->raydirx);
 		d->cam->deltadisty = fabs(1 / d->cam->raydiry);
 		side_dist(d);
