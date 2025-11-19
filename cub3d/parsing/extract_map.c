@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:02:58 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 13:51:24 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/19 13:15:29 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	**ft_realloc_map(char **map_tab, int *size)
 	return (new_map);
 }
 
-void	extract_map(t_map *map, char *line)
+void	extract_map(t_map **map, char *line)
 {
 	int		i;
 
@@ -51,16 +51,18 @@ void	extract_map(t_map *map, char *line)
 		return ;
 	while (line)
 	{
-		map->tab = ft_realloc_map(map->tab, &map->size);
-		if (!map->tab)
+		(*map)->tab = ft_realloc_map((*map)->tab, &(*map)->size);
+		if (!(*map)->tab)
 		{
 			ft_error('m');
 			return ;
 		}
-		map->tab[i] = ft_strdup(line);
+		(*map)->tab[i] = ft_strdup(line);
 		free(line);
-		line = get_next_line(map->fd);
+		line = get_next_line((*map)->fd);
 		i++;
 	}
-	check_map(map);
+	if (!check_map(*map))
+		ft_error('t');
+	free_map(map);
 }

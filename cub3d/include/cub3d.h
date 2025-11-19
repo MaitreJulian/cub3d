@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:50:15 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 18:23:31 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/19 13:15:44 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_map
 
 //ERROR
 int		ft_error(char c);
-void	free_map(t_map *map);
+void	free_map(t_map **map);
 void	free_tab(char **map);
 
 //CHECK_FILE
@@ -53,8 +53,8 @@ int		check_name(char *file);
 
 //INIT_MAP
 int		check_map(t_map *map);
-void	extract_map(t_map *map, char *line);
-void	init_map(t_map *map, char *file);
+void	extract_map(t_map **map, char *line);
+void	init_map(t_map **map, char *file);
 t_map	*parse_map(char **argv);
 
 //TEXTURES
