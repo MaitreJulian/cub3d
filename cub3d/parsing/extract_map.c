@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
+/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:02:58 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/19 13:15:29 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/19 14:21:52 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	extract_map(t_map **map, char *line)
 		i++;
 	}
 	if (!check_map(*map))
+	{
 		ft_error('t');
-	free_map(map);
+		free_map(map);
+	}
 }
