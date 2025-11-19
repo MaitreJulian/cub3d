@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:46:08 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 14:31:44 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/19 13:14:45 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,26 @@ int	check_name(char *file)
 	return (fd);
 }
 
-void	init_map(t_map *map, char *file)
+void	init_map(t_map **map, char *file)
 {
 	char		*line;
 
-	map->fd = check_name(file);
-	if (!map->fd)
+	(*map)->fd = check_name(file);
+	if (!(*map)->fd)
 	{
 		free_map(map);
 		return ;
 	}
-	map->size = 1;
-	map->texture = malloc(sizeof(t_textures));
-	map->tab = malloc(sizeof(char *));
-	if (!map->texture || !map->texture)
+	(*map)->size = 1;
+	(*map)->texture = malloc(sizeof(t_textures));
+	(*map)->tab = malloc(sizeof(char *));
+	if (!(*map)->texture || !(*map)->texture)
 	{
 		free_map(map);
 		return ;
 	}
-	map->tab[0] = NULL;
-	line = init_texture(map);
+	(*map)->tab[0] = NULL;
+	line = init_texture(*map);
 	if (!line)
 	{
 		free_map(map);
@@ -70,7 +70,7 @@ t_map	*parse_map(char **argv)
 	map = malloc(sizeof(t_map));
 	if (!map)
 		return (NULL);//FAUT FREE MLX
-	init_map(map, argv[1]);
+	init_map(&map, argv[1]);
 	// print_textures(map->texture);
 	// print_map(map->tab);
 	return (map);

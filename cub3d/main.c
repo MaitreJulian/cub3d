@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 18:58:11 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/19 13:08:58 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	close_window(void *param)
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
-	free_map(data->map);
+	free_map(&(data->map));
 	free(data->cam);
 	free(data->imgs[0].img);
 	free(data->imgs[1].img);
@@ -35,9 +35,9 @@ int	close_window(void *param)
 
 int	get_key(int keycode, void *param)
 {
-	t_data	*data;
+	// t_data	*data;
 
-	data = (t_data *)param;
+	// data = (t_data *)param;
 	if (keycode == ESCAPE)
 		return (close_window(param));
 	// else if (keycode == FORWARD)

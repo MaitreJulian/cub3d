@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 18:02:53 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 18:24:04 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/19 13:07:19 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ void	free_tab(char **map)
 	free(map);
 }
 
-void	free_map(t_map *map)
+void	free_map(t_map **map)
 {
-	if (map)
+	if (*map)
 	{
-		if (map->tab)
-			free_tab(map->tab);
-		if (map->texture)
+		if ((*map)->tab)
+			free_tab((*map)->tab);
+		if ((*map)->texture)
 		{
-			free(map->texture->north);
-			free(map->texture->south);
-			free(map->texture->west);
-			free(map->texture->east);
-			free(map->texture);
+			free((*map)->texture->north);
+			free((*map)->texture->south);
+			free((*map)->texture->west);
+			free((*map)->texture->east);
+			free((*map)->texture);
 		}
-		free(map);
-		map = NULL;
+		free(*map);
+		*map = NULL;
 	}
 }
 
