@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 18:36:10 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/19 14:23:55 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	*init_texture(t_map *map)
 	char	*line;
 
 	line = get_next_line(map->fd);
-	while (line && *line != '1')
+	while (line && only_01(line))
 	{
 		find_texture(map, line);
 		free(line);
