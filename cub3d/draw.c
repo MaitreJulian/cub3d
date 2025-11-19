@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:42:08 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 15:15:02 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/19 13:43:25 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	do_landscape(t_data *d)
 		while (j < WIN_HEIGHT)
 		{
 			if (j < WIN_HEIGHT / 2)
-				my_mlx_pixel_put(d, i, j, 0xFF059E);
+				my_mlx_pixel_put(d, i, j, 0xBD2639);
 			else
 				my_mlx_pixel_put(d, i, j, 0x000000);
 			j++;
@@ -74,11 +74,11 @@ static t_imgs	*get_text_img(t_data *d)
 	t_imgs	*im;
 	double	wall_x;
 
-	if (!d->cam->side && d->cam->raydirx > 0)
+	if (!d->cam->side && d->cam->raydirx < 0)
 		im = &d->imgs[0];
-	else if (!d->cam->side && d->cam->raydirx < 0)
+	else if (!d->cam->side && d->cam->raydirx > 0)
 		im = &d->imgs[1];
-	else if (d->cam->side && d->cam->raydiry > 0)
+	else if (d->cam->side && d->cam->raydiry < 0)
 		im = &d->imgs[2];
 	else
 		im = &d->imgs[3];
@@ -88,6 +88,10 @@ static t_imgs	*get_text_img(t_data *d)
 		wall_x = d->cam->posx + d->cam->perpwalldist * d->cam->raydirx;
 	wall_x -= floor(wall_x);
 	d->cam->tex_x = (int)(wall_x * (double)im->width);
+	if (!d->cam->side && d->cam->raydirx > 0)
+		d->cam->tex_x = im->width - d->cam->tex_x - 1;
+	else if (d->cam->side && d->cam->raydiry < 0)
+		d->cam->tex_x = im->width - d->cam->tex_x - 1;
 	return (im);
 }
 
@@ -103,7 +107,7 @@ static void	draw_tex(t_data *d, int i, t_imgs *im)
 			+ d->cam->lineheight / 2) * step;
 	while (d->cam->draw_start < d->cam->draw_end)
 	{
-		tex_y = (int)tex_pos & (im->height - 1);
+		tex_y = (int)tex_pos % (im->height - 1);
 		tex_pos += step;
 		color = get_text_color(im, d->cam->tex_x, tex_y);
 		my_mlx_pixel_put(d, i, d->cam->draw_start, color);

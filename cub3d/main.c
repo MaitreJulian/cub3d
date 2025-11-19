@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/19 11:29:51 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/19 11:49:05 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ int	close_window(void *param)
 
 	data = (t_data *)param;
 	mlx_destroy_image(data->mlx, data->img);
+	mlx_destroy_image(data->mlx, data->imgs[0].img);
+	mlx_destroy_image(data->mlx, data->imgs[1].img);
+	mlx_destroy_image(data->mlx, data->imgs[2].img);
+	mlx_destroy_image(data->mlx, data->imgs[3].img);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	free_map(data->map);
 	free(data->cam);
-	free(data->imgs[0].img);
-	free(data->imgs[1].img);
-	free(data->imgs[2].img);
-	free(data->imgs[3].img);
 	free(data);
 	exit (0);
 	return (0);
