@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 16:17:51 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/19 10:12:31 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int	update(t_data *data)
 		look_left(data);
 	if (data->key.look_r)
 		look_right(data);
+	draw(data, data->map);
 	return (0);
 }
 
