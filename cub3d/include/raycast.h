@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:40:16 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 16:22:32 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/19 10:19:35 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct s_camera
 	int		side;
 	int		lineheight;
 	double	rot_speed;
+	double	move_speed;
 	int		draw_start;
 	int		draw_end;
 	int		tex_x;

@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:12:48 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 16:19:52 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/19 14:15:02 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ static void	load_img(t_data	*d, int i)
 
 static void	get_map_pos(t_camera *cam, char pos)
 {
-	if (pos == 'S') // regarde au Sud
+	if (pos == 'N') // regarde au Nord
 	{
 		cam->dirx = -1;
 		cam->diry = 0;
 		cam->planey = 0.66;
 	}
-	else if (pos == 'N') // regarde au Nord
+	else if (pos == 'S') // regarde au Sud
 	{
 		cam->dirx = 1;
 		cam->diry = 0;
@@ -99,7 +99,8 @@ t_camera	*init_cam(void)
 	cam->planex = 0;
 	cam->planey = 0;
 	cam->hit = 0;
-	cam->rot_speed = 0.10;
+	cam->rot_speed = 0.1;
+	cam->move_speed = 0.3;
 	return (cam);
 }
 
