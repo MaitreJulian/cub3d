@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:50:15 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 11:49:24 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/18 18:23:31 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_textures
 	char	*south;
 	char	*east;
 	char	*west;
-	int		*ceiling;
-	int		*floor;
+	int		ceiling;
+	int		floor;
 }	t_textures;
 
 typedef struct s_map
@@ -45,6 +45,8 @@ typedef struct s_map
 
 //ERROR
 int		ft_error(char c);
+void	free_map(t_map *map);
+void	free_tab(char **map);
 
 //CHECK_FILE
 int		check_name(char *file);
@@ -72,5 +74,6 @@ void	print_textures(t_textures *text);
 void	print_map(char **map_tab);
 int		only_01(char *line);
 char	**copy_map(char **map);
+int	*ft_itoh(char *splited);
 
 #endif

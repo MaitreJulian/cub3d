@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/19 10:12:31 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/19 11:29:51 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ int	close_window(void *param)
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
+	free_map(data->map);
+	free(data->cam);
+	free(data->imgs[0].img);
+	free(data->imgs[1].img);
+	free(data->imgs[2].img);
+	free(data->imgs[3].img);
+	free(data);
 	exit (0);
 	return (0);
 }
@@ -117,6 +124,8 @@ int	main(int argc, char **argv)
 	data->addr = mlx_get_data_addr((*data).img, &(*data).bits_per_pixel,
 			&(*data).line_length, &(*data).endian);
 	data->map = parse_map(argv);
+	if (!data->map)
+		exit(1); // Il faut free la mlx avant de quitter
 	data = init_img(data);
 	data->cam = init_cam();
 	if (!data->cam)
