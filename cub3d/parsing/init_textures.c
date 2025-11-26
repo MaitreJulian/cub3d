@@ -6,17 +6,23 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/19 14:23:55 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/19 19:12:17 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 #include "../include/raycast.h"
 
-// int	verif_texture(t_map *map)
-// {
-// 	if()
-// }
+int	verif_texture(t_map *map, char *line)
+{
+	if (map->texture->ceiling < 0 || map->texture->floor < 0)
+	{
+		if (line)
+			free (line);
+		return (0);
+	}
+	return (1);
+}
 
 char	*sub_texture(char *line)
 {
@@ -54,12 +60,17 @@ int	put_rgb(char *line)
 	while (ft_isspace(*line) && *line)
 		line++;
 	splited = ft_split(line, ',');
+	if (!splited || !splited[0] || !splited[1] || !splited[2])
+	{
+		free_tab(splited);
+		return (-1);
+	}
 	r = ft_atoi(splited[0]);
 	g = ft_atoi(splited[1]);
 	b = ft_atoi(splited[2]);
-	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-		ft_error('a');
 	free_tab(splited);
+	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+		return (-1);
 	return (r * 65536 + g * 256 + b);
 }
 
@@ -87,15 +98,23 @@ char	*init_texture(t_map *map)
 {
 	char	*line;
 
+	map->texture->ceiling = -1;
+	map->texture->floor = -1;
+	map->texture->north = NULL;
+	map->texture->south = NULL;
+	map->texture->east = NULL;
+	map->texture->west = NULL;
 	line = get_next_line(map->fd);
-	while (line && only_01(line))
+	while (line && !only_01(line))
 	{
 		find_texture(map, line);
 		free(line);
 		line = get_next_line(map->fd);
 	}
-	// if (!verif_texture(map))
-	// 	ft_error('x');
-	
+	if (!verif_texture(map, line))
+	{
+		ft_error('x');
+		return (NULL);
+	}
 	return (line);
 }
