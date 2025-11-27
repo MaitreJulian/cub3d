@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/19 19:12:17 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:45:04 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ char	*init_texture(t_map *map)
 	map->texture->east = NULL;
 	map->texture->west = NULL;
 	line = get_next_line(map->fd);
-	while (line && !only_01(line))
+	while ((!all_textures(map) || *line == '\0')
+		&& (line && !only_01(line)))
 	{
 		find_texture(map, line);
 		free(line);
@@ -116,5 +117,7 @@ char	*init_texture(t_map *map)
 		ft_error('x');
 		return (NULL);
 	}
+	if (!line)
+		ft_error('t');
 	return (line);
 }

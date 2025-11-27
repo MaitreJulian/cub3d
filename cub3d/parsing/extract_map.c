@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
+/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:02:58 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/19 14:21:52 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/26 14:52:29 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	extract_map(t_map **map, char *line)
 	i = 0;
 	if (!map)
 		return ;
-	while (line)
+	while (line && *line != '\0')
 	{
 		(*map)->tab = ft_realloc_map((*map)->tab, &(*map)->size);
 		if (!(*map)->tab)
@@ -63,8 +63,5 @@ void	extract_map(t_map **map, char *line)
 		i++;
 	}
 	if (!check_map(*map))
-	{
-		ft_error('t');
 		free_map(map);
-	}
 }

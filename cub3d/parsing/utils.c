@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:05 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/18 18:33:58 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/26 16:22:35 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,21 @@ char	**copy_map(char **map)
 	}
 	map_copy[i] = NULL;
 	return (map_copy);
+}
+
+int	all_textures(t_map *map)
+{
+	if (map->texture->ceiling == -1)
+		return (0);
+	if (map->texture->floor == -1)
+		return (0);
+	if (!map->texture->east)
+		return (0);
+	if (!map->texture->west)
+		return (0);
+	if (!map->texture->north)
+		return (0);
+	if (!map->texture->south)
+		return (0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:46:08 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/19 13:14:45 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/26 14:37:28 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,16 @@ void	init_map(t_map **map, char *file)
 	char		*line;
 
 	(*map)->fd = check_name(file);
-	if (!(*map)->fd)
+	if ((*map)->fd == -1)
 	{
-		free_map(map);
+		free(*map);
+		*map = NULL;
 		return ;
 	}
 	(*map)->size = 1;
 	(*map)->texture = malloc(sizeof(t_textures));
 	(*map)->tab = malloc(sizeof(char *));
-	if (!(*map)->texture || !(*map)->texture)
+	if (!(*map)->texture || !(*map)->tab)
 	{
 		free_map(map);
 		return ;
