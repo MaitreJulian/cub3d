@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
+/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:41:03 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/26 17:00:40 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:20:44 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ int	check_map(t_map *map)
 		free_tab(map_copy);
 		return (0);
 	}
+	free_tab(map_copy);
 	return (1);
 }

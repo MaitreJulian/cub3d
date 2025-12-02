@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:12:48 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/19 16:12:59 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/28 11:49:35 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ t_camera	*init_cam(void)
 	cam->planey = 0;
 	cam->hit = 0;
 	cam->rot_speed = 0.1;
-	cam->move_speed = 0.3;
+	cam->move_speed = 0.25;
 	return (cam);
 }
 

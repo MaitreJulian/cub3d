@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:40:16 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/19 16:02:31 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/28 11:49:57 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define RIGHT		100
 # define LOOK_R		65361
 # define LOOK_L		65363
-# define WIN_HEIGHT	1200
-# define WIN_LENGTH	1200
+# define WIN_HEIGHT	1500
+# define WIN_LENGTH	1500
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~  STRUCT  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
+/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:05 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/26 16:22:35 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/01 10:23:17 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 void	print_map(char **map_tab)
 {
-	int i = 0;
-	int j = 0;
+	int	i;
+	int	j;
 
+	i = 0;
 	while (map_tab[i])
 	{
 		j = 0;

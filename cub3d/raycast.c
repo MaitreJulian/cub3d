@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 12:57:43 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/19 14:14:23 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/11/28 11:42:10 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ void	size_wall(t_data *d)
 		d->cam->perpwalldist = (d->cam->sidedistx - d->cam->deltadistx);
 	else
 		d->cam->perpwalldist = (d->cam->sidedisty - d->cam->deltadisty);
-	d->cam->lineheight = (int)(WIN_LENGTH / d->cam->perpwalldist);
-	d->cam->draw_start = -d->cam->lineheight / 2 + WIN_LENGTH / 2;
+	d->cam->lineheight = (int)(WIN_HEIGHT / d->cam->perpwalldist);
+	d->cam->draw_start = -d->cam->lineheight / 2 + WIN_HEIGHT / 2;
 	if (d->cam->draw_start < 0)
 		d->cam->draw_start = 0;
-	d->cam->draw_end = d->cam->lineheight / 2 + WIN_LENGTH / 2;
-	if (d->cam->draw_end >= WIN_LENGTH)
-		d->cam->draw_end = WIN_LENGTH - 1;
+	d->cam->draw_end = d->cam->lineheight / 2 + WIN_HEIGHT / 2;
+	if (d->cam->draw_end >= WIN_HEIGHT)
+		d->cam->draw_end = WIN_HEIGHT - 1;
 }
