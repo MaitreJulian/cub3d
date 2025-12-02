@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:05 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/01 10:23:17 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/02 14:06:05 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,25 @@ int	all_textures(t_map *map)
 		return (0);
 	if (!map->texture->south)
 		return (0);
+	return (1);
+}
+
+int	xpm_file(t_map *map)
+{
+	char	*paths[4];
+	int		i;
+	int		len;
+
+	paths[0] = map->texture->north;
+	paths[1] = map->texture->south;
+	paths[2] = map->texture->east;
+	paths[3] = map->texture->west;
+	i = -1;
+	while (++i < 4)
+	{
+		len = ft_strlen(paths[i]);
+		if (len < 4 || ft_strncmp(paths[i] + (len - 4), ".xpm", 4))
+			return (0);
+	}
 	return (1);
 }
