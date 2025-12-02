@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/26 16:45:04 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/11/27 14:52:02 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 int	verif_texture(t_map *map, char *line)
 {
 	if (map->texture->ceiling < 0 || map->texture->floor < 0)
+	{
+		if (line)
+			free (line);
+		return (0);
+	}
+	if (!xpm_file(map))
 	{
 		if (line)
 			free (line);
@@ -78,13 +84,13 @@ void	find_texture(t_map *map, char *line)
 {
 	while (*line)
 	{
-		if (!ft_strncmp(line, "NO ", 3))
+		if (!ft_strncmp(line, "NO ", 3) && !map->texture->north)
 			map->texture->north = sub_texture(line + 3);
-		else if (!ft_strncmp(line, "SO ", 3))
+		else if (!ft_strncmp(line, "SO ", 3) && !map->texture->south)
 			map->texture->south = sub_texture(line + 3);
-		else if (!ft_strncmp(line, "WE ", 3))
+		else if (!ft_strncmp(line, "WE ", 3) && !map->texture->west)
 			map->texture->west = sub_texture(line + 3);
-		else if (!ft_strncmp(line, "EA ", 3))
+		else if (!ft_strncmp(line, "EA ", 3) && !map->texture->east)
 			map->texture->east = sub_texture(line + 3);
 		else if (!ft_strncmp(line, "C ", 2))
 			map->texture->ceiling = put_rgb(line + 2);
