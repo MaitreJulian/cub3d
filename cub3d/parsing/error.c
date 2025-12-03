@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 18:02:53 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/02 14:02:10 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/02 15:48:24 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ int	ft_error(char c)
 		printf("Error amount of player.\n");
 	if (c == 'x')
 		printf("Error texture.\n");
+	if (c == 'e')
+		printf("Empty file.\n");
 	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:46:08 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/26 14:37:28 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:57:47 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_name(char *file)
 	if (fd == -1)
 	{
 		perror("Open error");
-		return (0);
+		return (-1);
 	}
 	return (fd);
 }
@@ -70,9 +70,7 @@ t_map	*parse_map(char **argv)
 
 	map = malloc(sizeof(t_map));
 	if (!map)
-		return (NULL);//FAUT FREE MLX
+		return (NULL);
 	init_map(&map, argv[1]);
-	// print_textures(map->texture);
-	// print_map(map->tab);
 	return (map);
 }

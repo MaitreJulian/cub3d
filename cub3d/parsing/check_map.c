@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:41:03 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/11/26 17:00:40 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/02 17:39:11 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	pos_player(t_map *map)
 
 int	flood_fill(char **map, int i, int j)
 {
-	if (!map[i] || (i == -1 || j == -1) || (!map[i][j] || map[i][j] == ' '))
+	if ((i == -1 || j == -1) || !map[i] || (!map[i][j] || map[i][j] == ' '))
 		return (0);
 	if (map[i][j] == '1' || map[i][j] == 'Y')
 		return (1);
@@ -93,7 +93,6 @@ int	check_map(t_map *map)
 	char	**map_copy;
 
 	map_copy = copy_map (map->tab);
-	print_map(map_copy);
 	if (check_player(map->tab) == -1)
 	{
 		free_tab(map_copy);
@@ -106,5 +105,6 @@ int	check_map(t_map *map)
 		free_tab(map_copy);
 		return (0);
 	}
+	free_tab(map_copy);
 	return (1);
 }
