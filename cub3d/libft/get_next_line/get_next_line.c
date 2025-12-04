@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 14:07:25 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/18 13:26:50 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/02 16:55:40 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,11 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
+	{
+		if (stash)
+			free(stash);
 		return (NULL);
+	}
 	stash = read_lines(fd, stash);
 	if (!stash || !stash[0])
 	{
