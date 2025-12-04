@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:05 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/02 15:44:20 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:56:10 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,26 +67,6 @@ int	only_01(char *line)
 	return (1);
 }
 
-char	**copy_map(char **map)
-{
-	int		i;
-	int		len;
-	char	**map_copy;
-
-	i = 0;
-	len = 0;
-	while (map && map[len])
-		len++;
-	map_copy = malloc(sizeof(char *) * (len + 1));
-	while (map && map[i])
-	{
-		map_copy[i] = ft_strdup(map[i]);
-		i++;
-	}
-	map_copy[i] = NULL;
-	return (map_copy);
-}
-
 int	all_textures(t_map *map)
 {
 	if (map->texture->ceiling == -1)
@@ -102,6 +82,28 @@ int	all_textures(t_map *map)
 	if (!map->texture->south)
 		return (0);
 	return (1);
+}
+
+int	exist_already(t_map *map, char *line)
+{
+	while (ft_isspace(*line) && *line)
+		line++;
+	if (*line)
+	{
+		if (!ft_strncmp(line, "NO ", 3) && map->texture->north)
+			return (1);
+		else if (!ft_strncmp(line, "SO ", 3) && map->texture->south)
+			return (1);
+		else if (!ft_strncmp(line, "WE ", 3) && map->texture->west)
+			return (1);
+		else if (!ft_strncmp(line, "EA ", 3) && map->texture->east)
+			return (1);
+		else if (!ft_strncmp(line, "C ", 2) && map->texture->ceiling != -1)
+			return (1);
+		else if (!ft_strncmp(line, "F ", 2) && map->texture->ceiling != -1)
+			return (1);
+	}
+	return (0);
 }
 
 int	xpm_file(t_map *map)

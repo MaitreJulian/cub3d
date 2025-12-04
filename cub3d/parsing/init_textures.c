@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/02 17:23:55 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:50:54 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	verif_texture(t_map *map, char *line)
 			free (line);
 		return (0);
 	}
+	if (!only_01(line))
+		return (0);
 	return (1);
 }
 
@@ -82,7 +84,9 @@ int	put_rgb(char *line)
 
 void	find_texture(t_map *map, char *line)
 {
-	while (*line)
+	while (ft_isspace(*line) && *line)
+		line++;
+	if (*line)
 	{
 		if (!ft_strncmp(line, "NO ", 3) && !map->texture->north)
 			map->texture->north = sub_texture(line + 3);
@@ -96,7 +100,11 @@ void	find_texture(t_map *map, char *line)
 			map->texture->ceiling = put_rgb(line + 2);
 		else if (!ft_strncmp(line, "F ", 2))
 			map->texture->floor = put_rgb(line + 2);
-		line ++;
+		else
+		{
+			printf("%s\n", line);
+			ft_error('x');
+		}
 	}
 }
 
@@ -112,7 +120,7 @@ char	*init_texture(t_map *map)
 		return (close(map->fd), NULL);
 	}
 	while ((!all_textures(map) || (line && *line == '\0'))
-		&& (line && !only_01(line)))
+		&& (line && !only_01(line)) && !exist_already(map, line))
 	{
 		find_texture(map, line);
 		free(line);

@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:02:58 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/02 14:19:39 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:05:17 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void	extract_map(t_map **map, char *line)
 		i++;
 	}
 	free(line);
-	if (!check_map(*map))
+	if (rest((*map)->fd) || !check_map(*map))
 		free_map(map);
 }

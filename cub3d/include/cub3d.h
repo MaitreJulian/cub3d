@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:50:15 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/02 15:45:15 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/04 14:48:10 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ t_map	*parse_map(char **argv);
 //TEXTURES
 void	find_texture(t_map *map, char *line);
 char	*init_texture(t_map *map);
+char	*sub_texture(char *line);
+int		put_rgb(char *line);
 
 //GNL
 char	*get_next_line(int fd);
@@ -77,5 +79,7 @@ char	**copy_map(char **map);
 int		all_textures(t_map *map);
 int		xpm_file(t_map *map);
 void	init_zero_textures(t_map *map);
+int		exist_already(t_map *map, char *line);
+int		rest(int fd);
 
 #endif
