@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/05 11:27:22 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 12:09:22 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	verif_texture(t_map *map, char *line)
 			free (line);
 		return (0);
 	}
+	if (!line)
+		return (1);
 	if (!only_01(line))
 		return (0);
 	return (1);

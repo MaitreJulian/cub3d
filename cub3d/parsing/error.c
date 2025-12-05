@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 18:02:53 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/02 15:48:24 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:34:54 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,18 @@ void	free_map(t_map **map)
 int	ft_error(char c)
 {
 	if (c == 'n')
-		printf("Wrong name of file. Usage : map_name.cub\n");
+		printf("Error\nWrong name of file. Usage : map_name.cub\n");
 	if (c == 'a')
-		printf("Wrong RGB.\n");
+		printf("Error\nWrong RGB.\n");
 	if (c == 'm')
-		printf("Error malloc.\n");
+		printf("Error\nError malloc.\n");
 	if (c == 't')
-		printf("Error map.\n");
+		printf("Error\nError map.\n");
 	if (c == 'p')
-		printf("Error amount of player.\n");
+		printf("Error\nAmount of player.\n");
 	if (c == 'x')
-		printf("Error texture.\n");
+		printf("Error\nWrong texture.\n");
 	if (c == 'e')
-		printf("Empty file.\n");
+		printf("Error\nEmpty file.\n");
 	return (-1);
 }

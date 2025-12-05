@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:41:03 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/05 11:12:36 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 12:06:41 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,28 +60,29 @@ int	flood_fill(char **map, int i, int j)
 	return (1);
 }
 
-int	check_player(char **map)
+int	check_player(char **map, int i, int j)
 {
-	int	i;
-	int	j;
 	int	p;
 
-	i = -1;
 	p = 0;
 	while (map[++i] && p < 2)
 	{
 		j = 0;
-		while (map[i][j] == '0' || map[i][j] == '1' || map[i][j] == ' ')
-			j++;
-		if (map[i][j] == '\0')
-			continue ;
-		if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'E'
-			|| map[i][j] == 'S')
+		while (map[i][j] != '\0')
 		{
-			p++;
+			while (map[i][j] == '0' || map[i][j] == '1' || map[i][j] == ' ')
+				j++;
+			if (map[i][j] == '\0')
+				continue ;
+			if (map[i][j] == 'N' || map[i][j] == 'W' || map[i][j] == 'E'
+				|| map[i][j] == 'S')
+			{
+				p++;
+				j++;
+			}
+			else
+				return (ft_error('t'));
 		}
-		else
-			return (ft_error('t'));
 	}
 	if (p == 0 || p >= 2)
 		return (ft_error('p'));
@@ -93,7 +94,7 @@ int	check_map(t_map *map)
 	char	**map_copy;
 
 	map_copy = copy_map (map->tab);
-	if (check_player(map->tab) == -1)
+	if (check_player(map->tab, -1, 0) == -1)
 	{
 		free_tab(map_copy);
 		return (0);
