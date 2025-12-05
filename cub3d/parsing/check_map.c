@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:41:03 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/04 10:22:35 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 11:12:36 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,25 @@ int	check_map(t_map *map)
 		return (0);
 	}
 	free_tab(map_copy);
+	return (1);
+}
+
+int	only_digit(char **tab)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (tab[i])
+	{
+		j = 0;
+		while (tab[i][j])
+		{
+			if (!ft_isdigit(tab[i][j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
 	return (1);
 }

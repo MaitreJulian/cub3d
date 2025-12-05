@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/04 15:11:45 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 11:12:22 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	verif_texture(t_map *map, char *line)
 			free (line);
 		return (0);
 	}
+	if (!only_01(line))
+		return (0);
 	return (1);
 }
 
@@ -56,26 +58,6 @@ char	*sub_texture(char *line)
 	return (new_line);
 }
 
-int	only_digit(char **tab)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (tab[i])
-	{
-		j = 0;
-		while (tab[i][j])
-		{
-			if (!ft_isdigit(tab[i][j]))
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
-
 int	put_rgb(char *line)
 {
 	int		r;
@@ -101,7 +83,9 @@ int	put_rgb(char *line)
 
 void	find_texture(t_map *map, char *line)
 {
-	while (*line)
+	while (ft_isspace(*line) && *line)
+		line++;
+	if (*line)
 	{
 		if (!ft_strncmp(line, "NO ", 3) && !map->texture->north)
 			map->texture->north = sub_texture(line + 3);
@@ -115,7 +99,11 @@ void	find_texture(t_map *map, char *line)
 			map->texture->ceiling = put_rgb(line + 2);
 		else if (!ft_strncmp(line, "F ", 2))
 			map->texture->floor = put_rgb(line + 2);
-		line ++;
+		else
+		{
+			printf("%s\n", line);
+			ft_error('x');
+		}
 	}
 }
 
@@ -131,7 +119,7 @@ char	*init_texture(t_map *map)
 		return (close(map->fd), NULL);
 	}
 	while ((!all_textures(map) || (line && *line == '\0'))
-		&& (line && !only_01(line)))
+		&& (line && !only_01(line)) && !exist_already(map, line))
 	{
 		find_texture(map, line);
 		free(line);
