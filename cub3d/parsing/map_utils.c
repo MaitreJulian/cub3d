@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extract_map_utils.c                                :+:      :+:    :+:   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:33:19 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/05 11:27:13 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 16:06:56 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,42 @@ int	rest(int fd)
 	}
 	else
 		return (0);
+}
+
+int	diagooooo(char **map, int i, int j)
+{
+	if (map[i + 1][j + 1] == ' ' || map[i + 1][j - 1] == ' '
+		|| map[i - 1][j + 1] == ' ' || map[i - 1][j - 1] == ' ')
+		return (0);
+	if (map[i + 1][j + 1] == '\0' || map[i + 1][j - 1] == '\0'
+		|| map[i - 1][j + 1] == '\0' || map[i - 1][j - 1] == '\0')
+		return (0);
+	return (1);
+}
+
+int	check_diago(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == '0')
+			{
+				if (i - 1 == -1 || j - 1 == -1)
+					return (0);
+				if (map[i] + 1 == NULL || map[i][j + 1] == '\0')
+					return (0);
+				if (!diagooooo(map, i, j))
+					return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

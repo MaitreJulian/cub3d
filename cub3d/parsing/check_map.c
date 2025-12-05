@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/14 16:41:03 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/05 12:06:41 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 16:01:22 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,11 @@ int	check_map(t_map *map)
 	{
 		ft_error('t');
 		free_tab(map_copy);
+		return (0);
+	}
+	if (!check_diago(map->tab))
+	{
+		ft_error('t');
 		return (0);
 	}
 	free_tab(map_copy);

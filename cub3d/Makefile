@@ -11,7 +11,7 @@ DIR_O	= file_o
 SRC		= main.c init.c draw.c free_and_error.c ft_mlx.c move.c look.c raycast.c\
 		  $(PARSING_DIR)/error.c $(PARSING_DIR)/extract_map.c \
 		  $(PARSING_DIR)/init_textures.c $(PARSING_DIR)/utils.c $(PARSING_DIR)/parse.c \
-		  $(PARSING_DIR)/check_map.c $(PARSING_DIR)/extract_map_utils.c
+		  $(PARSING_DIR)/check_map.c $(PARSING_DIR)/map_utils.c
 
 LIBFT_A		= ${LIBFT_DIR}/libft.a
 MINILIBX_A	= $(MINILIBX_DIR)/libmlx_Linux.a

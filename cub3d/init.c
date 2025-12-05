@@ -6,14 +6,14 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:12:48 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/12/05 10:31:04 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 13:46:11 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/raycast.h"
 #include "stdio.h"
 
-static void	load_img(t_data	*d, int i)
+static int	load_img(t_data	*d, int i)
 {
 	char	*file;
 
@@ -27,8 +27,11 @@ static void	load_img(t_data	*d, int i)
 		file = d->map->texture->east;
 	d->imgs[i].img = mlx_xpm_file_to_image(d->mlx, file,
 			&d->imgs[i].width, &d->imgs[i].height);
+	if (!d->imgs[i].img)
+		return (0);
 	d->imgs[i].addr = mlx_get_data_addr(d->imgs[i].img, &d->imgs[i].bpp,
 			&d->imgs[i].line_len, &d->imgs[i].endian);
+	return (1);
 }
 
 static void	get_map_pos(t_camera *cam, char pos)
@@ -113,7 +116,15 @@ t_data	*init_img(t_data *d)
 	while (i < 4)
 	{
 		d->imgs[i].bpp = 32;
-		load_img(d, i);
+		if (!load_img(d, i))
+		{
+			while (i-- > 0)
+				mlx_destroy_image(d->mlx, d->imgs[i].img);
+			mlx_destroy_image(d->mlx, d->img);
+			mlx_destroy_window(d->mlx, d->win);
+			mlx_destroy_display(d->mlx);
+			return (free_map(&d->map), free(d->mlx), free(d), NULL);
+		}
 		i++;
 	}
 	d->key.up = 0;

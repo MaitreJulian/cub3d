@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/12/05 10:32:47 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 13:44:43 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ int	main(int argc, char **argv)
 	data->addr = mlx_get_data_addr((*data).img, &(*data).bits_per_pixel,
 			&(*data).line_length, &(*data).endian);
 	data = init_img(data);
+	if (!data)
+		return (display_error("Error\nxpm file", 1, 2));
 	data->cam = init_cam();
 	if (!data->cam)
 		return (1);

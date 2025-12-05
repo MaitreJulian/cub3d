@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:50:15 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/05 11:26:58 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 15:39:11 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ int		xpm_file(t_map *map);
 void	init_zero_textures(t_map *map);
 int		exist_already(t_map *map, char *line);
 int		rest(int fd);
+int		check_diago(char **map);
 
 #endif
