@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 14:33:19 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/05 11:19:18 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 11:27:13 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ int	rest(int fd)
 	char	*line;
 
 	line = get_next_line(fd);
-	while (!line || *line == '\0')
+	while (line && *line == '\0')
 	{
 		free(line);
 		line = get_next_line(fd);
 	}
-	if (line || *line != '\0')
+	if (line && *line != '\0')
 	{
 		ft_error('t');
 		free(line);

@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:50:15 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/05 11:14:26 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 11:26:58 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	init_map(t_map **map, char *file);
 t_map	*parse_map(char **argv);
 
 //TEXTURES
-void	find_texture(t_map *map, char *line);
+int		find_texture(t_map *map, char *line);
 char	*init_texture(t_map *map);
 char	*sub_texture(char *line);
 int		put_rgb(char *line);
