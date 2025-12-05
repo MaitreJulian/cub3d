@@ -6,7 +6,7 @@
 /*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/04 14:50:54 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:24:29 by jvenkata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	put_rgb(char *line)
 	return (r * 65536 + g * 256 + b);
 }
 
-void	find_texture(t_map *map, char *line)
+int	find_texture(t_map *map, char *line)
 {
 	while (ft_isspace(*line) && *line)
 		line++;
@@ -102,10 +102,10 @@ void	find_texture(t_map *map, char *line)
 			map->texture->floor = put_rgb(line + 2);
 		else
 		{
-			printf("%s\n", line);
-			ft_error('x');
+			return (0);
 		}
 	}
+	return (1);
 }
 
 char	*init_texture(t_map *map)
@@ -120,9 +120,9 @@ char	*init_texture(t_map *map)
 		return (close(map->fd), NULL);
 	}
 	while ((!all_textures(map) || (line && *line == '\0'))
-		&& (line && !only_01(line)) && !exist_already(map, line))
+		&& (line && !only_01(line)) && !exist_already(map, line)
+		&& find_texture(map, line))
 	{
-		find_texture(map, line);
 		free(line);
 		line = get_next_line(map->fd);
 	}
