@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:40:16 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/28 11:49:57 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 10:32:21 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define RIGHT		100
 # define LOOK_R		65361
 # define LOOK_L		65363
-# define WIN_HEIGHT	1500
-# define WIN_LENGTH	1500
+# define WIN_HEIGHT	600
+# define WIN_LENGTH	600
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~  STRUCT  ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -48,13 +48,13 @@ typedef struct s_key
 
 typedef struct s_imgs
 {
-	void	*img;		// pointeur image MLX
-	void	*addr;		// adresse du premier pixel
-	int		bpp;		// bits par pixel
-	int		line_len;	// taille d'une ligne de l'image en octets
-	int		endian;		// fuck endian
-	int		width;		// largeur de l'image
-	int		height;		// hauteur de l'image
+	void	*img;
+	void	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
 }			t_imgs;
 
 typedef struct s_camera
@@ -85,6 +85,7 @@ typedef struct s_camera
 	int		draw_start;
 	int		draw_end;
 	int		tex_x;
+	double	size;
 }			t_camera;
 
 typedef struct s_data
@@ -121,6 +122,7 @@ void		move_forward(t_data *data);
 void		move_backward(t_data *data);
 void		move_left(t_data *data);
 void		move_right(t_data *data);
+double		get_time(void);
 
 // LOOK
 void		look_right(t_data *d);
@@ -128,5 +130,6 @@ void		look_left(t_data *d);
 
 // UTILS
 int			display_error(char *s, int return_value, int fd);
+int			close_window(void *param);
 
 #endif

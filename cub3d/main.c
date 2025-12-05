@@ -6,54 +6,12 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 10:34:50 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/19 16:12:23 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/05 10:32:47 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/raycast.h"
 #include "include/cub3d.h"
-
-int	close_window(void *param)
-{
-	t_data	*data;
-
-	data = (t_data *)param;
-	mlx_destroy_image(data->mlx, data->img);
-	mlx_destroy_image(data->mlx, data->imgs[0].img);
-	mlx_destroy_image(data->mlx, data->imgs[1].img);
-	mlx_destroy_image(data->mlx, data->imgs[2].img);
-	mlx_destroy_image(data->mlx, data->imgs[3].img);
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	free(data->mlx);
-	free_map(&(data->map));
-	free(data->cam);
-	free(data);
-	exit (0);
-	return (0);
-}
-
-// int	get_key(int keycode, void *param)
-// {
-// 	// t_data	*data;
-
-// 	// data = (t_data *)param;
-// 	if (keycode == ESCAPE)
-// 		return (close_window(param));
-// 	// else if (keycode == FORWARD)
-// 	// 	move_forward(data);
-// 	// else if (keycode == BACKWARD)
-// 	// 	move_backward(data);
-// 	// else if (keycode == LEFT)
-// 	// 	move_left(data);
-// 	// else if (keycode == RIGHT)
-// 	// 	move_right(data);
-// 	// else if (keycode == LOOK_L)
-// 	// 	look_left(data);
-// 	// else if (keycode == LOOK_R)
-// 	// 	look_right(data);
-// 	return (0);
-// }
 
 int	key_press(int keycode, t_data *data)
 {
@@ -109,6 +67,15 @@ int	update(t_data *data)
 	return (0);
 }
 
+void	loop_n_hook(t_data *data)
+{
+	mlx_hook(data->win, 2, 1L << 0, key_press, data);
+	mlx_hook(data->win, 3, 1L << 1, key_release, data);
+	mlx_hook((*data).win, 17, 0, close_window, data);
+	mlx_loop_hook(data->mlx, update, data);
+	mlx_loop((*data).mlx);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	*data;
@@ -120,7 +87,7 @@ int	main(int argc, char **argv)
 		return (display_error("Malloc of struct data failed", 1, 2));
 	data->map = parse_map(argv);
 	if (!data->map)
-		return (free(data), 1); // Il faut free la mlx avant de quitter
+		return (free(data), 1);
 	data->mlx = mlx_init();
 	data->win = mlx_new_window((*data).mlx, WIN_LENGTH, WIN_HEIGHT, "cub3D");
 	data->img = mlx_new_image((*data).mlx, WIN_LENGTH, WIN_HEIGHT);
@@ -131,11 +98,6 @@ int	main(int argc, char **argv)
 	if (!data->cam)
 		return (1);
 	draw(data, data->map);
-	// mlx_key_hook((*data).win, get_key, data);
-	mlx_hook(data->win, 2, 1L << 0, key_press, data);
-	mlx_hook(data->win, 3, 1L << 1, key_release, data);
-	mlx_hook((*data).win, 17, 0, close_window, data);
-	mlx_loop_hook(data->mlx, update, data);
-	mlx_loop((*data).mlx);
+	loop_n_hook(data);
 	return (0);
 }

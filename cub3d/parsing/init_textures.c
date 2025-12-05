@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
+/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/02 17:23:55 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/04 15:11:45 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,26 @@ char	*sub_texture(char *line)
 	return (new_line);
 }
 
+int	only_digit(char **tab)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (tab[i])
+	{
+		j = 0;
+		while (tab[i][j])
+		{
+			if (!ft_isdigit(tab[i][j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 int	put_rgb(char *line)
 {
 	int		r;
@@ -66,11 +86,10 @@ int	put_rgb(char *line)
 	while (ft_isspace(*line) && *line)
 		line++;
 	splited = ft_split(line, ',');
-	if (!splited || !splited[0] || !splited[1] || !splited[2])
-	{
-		free_tab(splited);
-		return (-1);
-	}
+	if (!splited || !splited[0] || !splited[1] || !splited[2] || splited[3])
+		return (free_tab(splited), -1);
+	if (!only_digit(splited))
+		return (free_tab(splited), -1);
 	r = ft_atoi(splited[0]);
 	g = ft_atoi(splited[1]);
 	b = ft_atoi(splited[2]);
