@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:48:05 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/05 11:09:34 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/09 12:39:00 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	exist_already(t_map *map, char *line)
 			return (1);
 		else if (!ft_strncmp(line, "C ", 2) && map->texture->ceiling != -1)
 			return (1);
-		else if (!ft_strncmp(line, "F ", 2) && map->texture->ceiling != -1)
+		else if (!ft_strncmp(line, "F ", 2) && map->texture->floor != -1)
 			return (1);
 	}
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
+/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 18:02:53 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/05 11:34:54 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/09 12:03:39 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	free_map(t_map **map)
 {
 	if (*map)
 	{
+		close((*map)->fd);
 		if ((*map)->tab)
 			free_tab((*map)->tab);
 		if ((*map)->texture)
@@ -62,5 +63,7 @@ int	ft_error(char c)
 		printf("Error\nWrong texture.\n");
 	if (c == 'e')
 		printf("Error\nEmpty file.\n");
+	if (c == 'z')
+		printf("Error\nNot all textures.\n");
 	return (-1);
 }

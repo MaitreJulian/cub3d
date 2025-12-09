@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 12:28:06 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/05 12:09:22 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/09 12:29:18 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,26 @@
 
 int	verif_texture(t_map *map, char *line)
 {
-	if (map->texture->ceiling < 0 || map->texture->floor < 0)
+	if (map->texture->ceiling == -2 || map->texture->floor == -2)
 	{
 		if (line)
 			free (line);
+		ft_error('a');
 		return (0);
 	}
+	if (!all_textures(map))
+		return (free(line), ft_error('z'), 0);
 	if (!xpm_file(map))
 	{
 		if (line)
 			free (line);
+		ft_error('x');
 		return (0);
 	}
 	if (!line)
-		return (1);
+		return (ft_error('t'), 0);
 	if (!only_01(line))
-		return (0);
+		return (ft_error('t'), free(line), 0);
 	return (1);
 }
 
@@ -71,9 +75,9 @@ int	put_rgb(char *line)
 		line++;
 	splited = ft_split(line, ',');
 	if (!splited || !splited[0] || !splited[1] || !splited[2] || splited[3])
-		return (free_tab(splited), -1);
+		return (free_tab(splited), -2);
 	if (!only_digit(splited))
-		return (free_tab(splited), -1);
+		return (free_tab(splited), -2);
 	r = ft_atoi(splited[0]);
 	g = ft_atoi(splited[1]);
 	b = ft_atoi(splited[2]);
@@ -102,9 +106,9 @@ int	find_texture(t_map *map, char *line)
 		else if (!ft_strncmp(line, "F ", 2))
 			map->texture->floor = put_rgb(line + 2);
 		else
-		{
 			return (0);
-		}
+		if (map->texture->ceiling == -2 || map->texture->floor == -2)
+			return (0);
 	}
 	return (1);
 }
@@ -120,8 +124,10 @@ char	*init_texture(t_map *map)
 		ft_error('e');
 		return (close(map->fd), NULL);
 	}
-	while ((!all_textures(map) || (line && *line == '\0'))
-		&& (line && !only_01(line)) && !exist_already(map, line)
+	while ((!all_textures(map)
+			|| (line && *line == '\0'))
+		&& (line && !only_01(line))
+		&& !exist_already(map, line)
 		&& find_texture(map, line))
 	{
 		free(line);
@@ -130,10 +136,7 @@ char	*init_texture(t_map *map)
 	if (!verif_texture(map, line))
 	{
 		get_next_line(-1);
-		ft_error('x');
 		return (close(map->fd), NULL);
 	}
-	if (!line)
-		ft_error('t');
 	return (line);
 }

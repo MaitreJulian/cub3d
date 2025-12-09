@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:42:08 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/11/19 16:13:48 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/09 12:45:40 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,3 @@ void	draw(t_data *d, t_map *map)
 	}
 	mlx_put_image_to_window(d->mlx, d->win, d->img, 0, 0);
 }
-
-// printf("posX : %f\n", d->cam->posx);
-// printf("posY : %f\n", d->cam->posy);
-// printf("dirX : %f\n", d->cam->dirx);
-// printf("diry : %f\n\n", d->cam->diry);

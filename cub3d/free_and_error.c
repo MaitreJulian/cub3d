@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:44:32 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/12/04 15:18:24 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/09 10:41:13 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	close_window(void *param)
 	t_data	*data;
 
 	data = (t_data *)param;
+	close(data->map->fd);
 	mlx_destroy_image(data->mlx, data->img);
 	mlx_destroy_image(data->mlx, data->imgs[0].img);
 	mlx_destroy_image(data->mlx, data->imgs[1].img);

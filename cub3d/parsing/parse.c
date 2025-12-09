@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvenkata <jvenkata@student.s19.be>         +#+  +:+       +#+        */
+/*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 17:46:08 by jvenkata          #+#    #+#             */
-/*   Updated: 2025/12/02 16:57:47 by jvenkata         ###   ########.fr       */
+/*   Updated: 2025/12/09 11:12:17 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 int	check_name(char *file)
 {
 	int		fd;
-	char	*temp;
+	int		i;
 
 	fd = 0;
-	temp = file;
-	while (*temp && *temp != '.')
-		temp++;
-	if (*temp != '.')
+	i = ft_strlen(file) - 1;
+	while (file[i] && file[i] != '.')
+		i--;
+	if (!file[i])
 		return (ft_error('n'));
-	if (ft_strcmp(temp, ".cub"))
+	if (ft_strcmp(&file[i], ".cub"))
 		return (ft_error('n'));
 	fd = open(file, O_RDONLY);
 	if (fd == -1)

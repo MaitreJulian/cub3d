@@ -6,7 +6,7 @@
 /*   By: gcauchy <gcauchy@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 13:12:48 by gcauchy           #+#    #+#             */
-/*   Updated: 2025/12/05 13:46:11 by gcauchy          ###   ########.fr       */
+/*   Updated: 2025/12/09 11:36:33 by gcauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,6 @@ t_data	*init_img(t_data *d)
 		{
 			while (i-- > 0)
 				mlx_destroy_image(d->mlx, d->imgs[i].img);
-			mlx_destroy_image(d->mlx, d->img);
-			mlx_destroy_window(d->mlx, d->win);
 			mlx_destroy_display(d->mlx);
 			return (free_map(&d->map), free(d->mlx), free(d), NULL);
 		}
